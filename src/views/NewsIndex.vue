@@ -3,9 +3,22 @@
     <h1>{{ message }}</h1>
     <ul>
       <li v-for="post in posts.articles">
-        {{ post }}
+        <p>Author: {{ post.author }}</p>
+        <p>Title: {{ post.title }}</p>
+        <p>Content: {{ post.content }}</p>
+        <button v-on:click="newsModal(post)">Show More Info</button>
       </li>
     </ul>
+    <dialog id="news-modal">
+      <form method="dialog">
+        <p>Author: {{ currentPost.author }}</p>
+        <p>Title: {{ currentPost.title }}</p>
+        <p>Description: {{ currentPost.description }}</p>
+        <p>URL: {{ currentPost.url }}</p>
+        <p>Published At: {{ currentPost.publishedAt }}</p>
+        <button>Close</button>
+      </form>
+    </dialog>
   </div>
 </template>
 
@@ -17,7 +30,8 @@ import axios from 'axios';
     data: function () {
       return {
         message: "Welcome to the News!",
-        posts: []
+        posts: [],
+        currentPost: {}
       };
     },
     created: function () {
@@ -32,6 +46,11 @@ import axios from 'axios';
             console.log(response.data);
             this.posts = response.data;
           })
+      },
+      newsModal: function(thePost) {
+        console.log("in the news modal");
+        document.querySelector("#news-modal").showModal();
+        this.currentPost = thePost;
       }
     },
   };
