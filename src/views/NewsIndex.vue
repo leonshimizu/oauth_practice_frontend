@@ -1,5 +1,6 @@
 <template>
   <div class="news">
+    <a href="https://github.com/login/oauth/authorize?client_id=b860c84ea950731da4f0">Sign into GitHub</a>
     <h1>{{ message }}</h1>
     <ul>
       <li v-for="post in posts.articles">
