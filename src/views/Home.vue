@@ -44,6 +44,11 @@
             console.log(response.data);
             this.todos = response.data;
           })
+        axios 
+          .get('/news')
+          .then(response => {
+            console.log(response.data);
+          })
       },
       todoModal: function(theTodo) {
         console.log("in the show modal function");
