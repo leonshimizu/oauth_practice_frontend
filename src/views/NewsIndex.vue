@@ -26,7 +26,7 @@
 <style></style>
 
 <script>
-import axios from 'axios';
+  import axios from 'axios';
   export default {
     data: function () {
       return {
@@ -37,6 +37,13 @@ import axios from 'axios';
     },
     created: function () {
       this.newsIndex();
+  //     var code = this.$route.query.code;
+  //     if (code) {
+  //       axios.get("/auth/github/callback?code=" + code).then((response) => {
+  //         localStorage.setItem("github_access_token", response.data.access_token);
+  //         this.$router.push("/about");
+  //       });
+  //     }
     },
     methods: {
       newsIndex: function() {
